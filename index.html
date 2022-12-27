@@ -21,18 +21,17 @@
 
             <ul class="my-4">
                 <li class="form-control list-unstyled d-flex align-items-center justify-content-between mb-4" v-for="(element, index) in taskList">
-                    <div>{{index + 1}} - {{taskList[index].text}}</div>
+                    <div :class="(element.done === true) ? 'text-decoration-line-through' : '' " @click="doneTask(index)">{{index + 1}} - {{taskList[index].text}}</div>
                     <div class="task-actions">
-                        <button class="btn btn-success m-2">&check;</button>
-                        <button class="btn btn-outline-dark m-2">&larr;</button>
-                        <button class="btn btn-danger m-2" @click="delTask">&cross;</button>
+                        <button class="btn btn-success m-2" @click="doneTask(index)">&check;</button>
+                        <button class="btn btn-danger m-2" @click="deleteTask(index)">&cross;</button>
                     </div>
                 </li>
             </ul>
 
             <!-- Add new To Do Element -->
             <div class="d-flex pt-4">
-                <input class="form-control" type="text" placeholder="Add new task" v-model="newTask" />
+                <input class="form-control" type="text" placeholder="Add new To Do Element" v-model="newTask" @keyup.enter="addTask" />
                 <button class="btn btn-primary" @click="addTask">Add</button>
             </div>
         </div>

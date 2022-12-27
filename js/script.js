@@ -6,11 +6,21 @@ createApp({
         refTask: 0,
         newTask: "",
         taskList: [
-          { text: "Ripulire la stanza", done: false },
-          { text: "Fare la doccia", done: false },
-          { text: "Fare colazione", done: false },
-          { text: "Preparare la postazione", done: false },
-          { text: "Inizare a lavorare", done: false },
+        { 
+            text: "Ripulire la stanza", done: false 
+        },
+        { 
+            text: "Fare la doccia", done: false 
+        },
+        { 
+            text: "Fare colazione", done: false 
+        },
+        { 
+            text: "Preparare la postazione", done: false 
+        },
+        { 
+            text: "Inizare a lavorare", done: false 
+        },
         ],
       };
     },
@@ -23,9 +33,19 @@ createApp({
       
             this.taskList.push(newObject);
             this.newTask = "";
-          },
-          delTask(index) {
+        },
+            
+        deleteTask(index) {
             this.taskList.splice(index, 1);
+        },
+
+        doneTask(index) {
+            let isDone = this.taskList[index].done;
+            if (isDone === false) {
+              this.taskList[index].done = true;
+            } else {
+              this.taskList[index].done = false;
+            }
         },
     },
 }).mount("#appToDoList");
